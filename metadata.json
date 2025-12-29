@@ -1,0 +1,7 @@
+{
+  "name": "Amiron Booking",
+  "description": "A high-precision AI session booking dashboard with advanced timezone support and strict availability management.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
