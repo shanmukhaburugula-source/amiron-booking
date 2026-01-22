@@ -13,10 +13,11 @@ interface BookingModalProps {
 }
 
 const SESSION_TYPES = [
-  "AI Automation Agents Building",
-  "App Development using AI Tools",
-  "Custom AI Strategy Consulting",
-  "Large Language Model Fine-tuning"
+  "Website voice assistant",
+  "Customer support chatbot for websites",
+  "Inbound sales calls",
+  "Business automations",
+  "Advanced AI Implementation"
 ];
 
 const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, userTimezone }) => {
@@ -111,7 +112,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
       
       const confirmed = await createNewBooking(user.id, bookingData);
       setStep('success');
-      // On success, we don't allow going back anymore
       onConfirm(confirmed);
     } catch (err) {
       console.error("Booking error:", err);
@@ -144,20 +144,20 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
   return (
     <div className="fixed inset-0 z-[100] bg-white dark:bg-zinc-950 flex flex-col transition-colors duration-300">
       {/* Header with Back and Close */}
-      <div className="px-6 md:px-12 py-8 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between sticky top-0 z-10">
+      <div className="px-6 md:px-12 py-8 bg-white/80 dark:bg-zinc-950 backdrop-blur-xl border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-6">
           {step !== 'success' && (
             <button 
               onClick={handleBack}
-              className="group flex items-center gap-3 text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-black uppercase text-[10px] tracking-widest transition-all"
+              className="group flex items-center gap-3 text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-black uppercase text-[11px] tracking-widest transition-all"
             >
               <div className="w-10 h-10 rounded-2xl border border-zinc-100 dark:border-zinc-800 flex items-center justify-center group-hover:bg-zinc-50 dark:group-hover:bg-zinc-900 transition-all">
                 <ICONS.ChevronLeft className="w-4 h-4" />
               </div>
-              Go Back
+              GO BACK
             </button>
           )}
-          <div className="hidden sm:block">
+          <div>
             <h2 className="text-2xl font-black text-zinc-900 dark:text-white tracking-tighter">
               {step === 'date' && 'Select a Time'}
               {step === 'session' && 'Choose Focus'}
@@ -169,7 +169,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
 
         <button 
           onClick={onClose}
-          className="p-3 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-400 hover:text-red-500 transition-all active:scale-90"
+          className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-400 hover:text-red-500 transition-all active:scale-90"
           title="Cancel and Exit"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -182,7 +182,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
             <div className="max-w-xl">
               <span className="text-purple-500 font-black text-[10px] uppercase tracking-[0.2em] mb-3 block">Step 01 / 03</span>
               <h1 className="text-5xl font-black text-zinc-900 dark:text-white tracking-tighter leading-tight mb-4">When should we sync?</h1>
-              <p className="text-zinc-500 dark:text-zinc-400 text-lg font-medium">Showing 60 days of availability based on your local time: <span className="text-zinc-900 dark:text-zinc-100 font-bold">{userTimezone}</span></p>
+              <p className="text-zinc-500 dark:text-zinc-400 text-lg font-medium">Showing 60 days of availability in: <span className="text-zinc-900 dark:text-zinc-100 font-bold">{userTimezone}</span></p>
             </div>
 
             <div className="space-y-8">
@@ -266,8 +266,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
           <div className="max-w-3xl mx-auto space-y-16 animate-in fade-in slide-in-from-bottom-6 duration-500">
             <div className="text-center">
               <span className="text-purple-500 font-black text-[10px] uppercase tracking-[0.2em] mb-3 block">Step 02 / 03</span>
-              <h2 className="text-5xl font-black text-zinc-900 dark:text-white tracking-tighter mb-4">Choose your Focus</h2>
-              <p className="text-zinc-500 dark:text-zinc-400 text-lg font-medium">Select the session archetype that matches your goals.</p>
+              <h2 className="text-5xl font-black text-zinc-900 dark:text-white tracking-tighter mb-4">Choose Focus</h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-lg font-medium">Select a core service for this session.</p>
             </div>
 
             <div className="grid grid-cols-1 gap-6">
@@ -275,15 +275,15 @@ const BookingModal: React.FC<BookingModalProps> = ({ user, onClose, onConfirm, u
                 <button
                   key={type}
                   onClick={() => { setSelectedSessionType(type); setStep('payment'); }}
-                  className={`w-full text-left p-10 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-[2.5rem] hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-indigo-50/10 dark:hover:bg-indigo-900/10 transition-all group flex items-center justify-between ${selectedSessionType === type ? 'ring-4 ring-indigo-500/10 border-indigo-500' : ''}`}
+                  className={`w-full text-left p-10 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-[2.5rem] hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-indigo-50/10 dark:hover:bg-indigo-900/10 transition-all group flex items-center justify-between ${selectedSessionType === type ? 'ring-4 ring-indigo-500/20 border-indigo-500 bg-white dark:bg-zinc-800' : ''}`}
                 >
                   <div className="flex items-center gap-8">
-                    <div className="w-16 h-16 bg-zinc-50 dark:bg-zinc-800 rounded-[1.25rem] flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                      <ICONS.Check className={`w-6 h-6 ${selectedSessionType === type ? 'text-indigo-600 dark:text-indigo-400' : 'text-zinc-200'}`} />
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${selectedSessionType === type ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-300'}`}>
+                      <ICONS.Check className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="text-2xl font-black text-zinc-900 dark:text-white mb-1">{type}</h4>
-                      <p className="text-zinc-400 font-bold text-xs uppercase tracking-widest">Advanced AI Implementation Workflow</p>
+                      <p className="text-zinc-400 font-black text-[10px] uppercase tracking-widest">ADVANCED AI IMPLEMENTATION WORKFLOW</p>
                     </div>
                   </div>
                   <ICONS.ChevronRight className="w-6 h-6 text-zinc-200 group-hover:text-indigo-600 transition-colors" />
