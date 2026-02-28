@@ -87,10 +87,10 @@ const Layout: React.FC<LayoutProps> = ({
       <header className="sticky top-0 z-50 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-100 dark:border-zinc-800 px-4 md:px-10 py-5 flex items-center justify-between transition-all duration-300">
         <div 
           onClick={onHome}
-          className="cursor-pointer group flex items-center gap-2.5"
+          className="cursor-pointer group flex items-center gap-3"
         >
-          <div className="w-10 h-10 bg-[#f3f0ff] dark:bg-purple-900/20 rounded-xl flex items-center justify-center group-hover:rotate-6 transition-all duration-300">
-            <span className="text-[#a78bfa] font-black text-xl">A</span>
+          <div className="w-10 h-10 bg-purple-600 dark:bg-purple-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-500/20">
+            <ICONS.Calendar className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-100 hidden sm:block">
             Amiron <span className="text-[#d8b4fe] font-light">Booking</span>

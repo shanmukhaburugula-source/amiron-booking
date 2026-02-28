@@ -175,9 +175,19 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           
           {/* Centered Header Section */}
           <div className="w-full text-center mb-10">
-            <h1 className="text-2xl font-black tracking-tight text-zinc-900 mb-8">
-              Amiron <span className="text-purple-500 font-light">Booking</span>
-            </h1>
+            <div className="flex flex-col items-center mb-6">
+              <div className="w-20 h-20 bg-purple-600 rounded-3xl flex items-center justify-center mb-6 shadow-2xl shadow-purple-500/30 animate-in zoom-in duration-700">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-white">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              </div>
+              <h1 className="text-2xl font-black tracking-tight text-zinc-900">
+                Amiron <span className="text-purple-500 font-light">Booking</span>
+              </h1>
+            </div>
             <h2 className="text-4xl font-black text-zinc-900 tracking-tight">
               {view === InternalAuthView.LOGIN ? 'Welcome back 💻' : 'Join the Elite 📅'}
             </h2>
